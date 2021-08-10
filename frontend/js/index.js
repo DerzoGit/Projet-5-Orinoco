@@ -12,9 +12,9 @@ const displayProducts = async () => {
     try {
         teddies = await getProducts();
         console.log(teddies);
-        const template = document.querySelector("#teddyTemplate");
+        const template = document.querySelector("#teddyList");
         for (let teddy of teddies) {
-            const ficheProduct = document.querySelector(".ficheProduct");
+            const ficheProduct = document.querySelector(".productCard");
             const clone = document.importNode(template.content, true);
             const teddyName = clone.querySelector(".card-title");
             teddyName.innerHTML = teddy.name;
