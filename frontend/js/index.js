@@ -14,15 +14,17 @@ const displayProducts = async () => {
         console.log(teddies);
         const template = document.querySelector("#teddyList");
         for (let teddy of teddies) {
-            const ficheProduct = document.querySelector(".productCard");
+            const productCard = document.querySelector(".productCard");
             const clone = document.importNode(template.content, true);
             const teddyName = clone.querySelector(".card-title");
             teddyName.innerHTML = teddy.name;
             const teddyImg = clone.querySelector(".card-img-top");
             teddyImg.src = teddy.imageUrl;
+            const teddyPrice = clone.querySelector(".card-text");
+            teddyPrice.innerHTML = teddy.price / 100 + "€";
             const teddyLink = clone.querySelector(".card-link");
-            teddyLink.href = `product.html?id=${teddy._id}`;
-            ficheProduct.appendChild(clone);
+            teddyLink.href = `/frontend/html/product.html?id=${teddy._id}`;
+            productCard.appendChild(clone);
         }
         
     } catch (error) {
