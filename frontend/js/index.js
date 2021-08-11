@@ -20,6 +20,8 @@ const displayProducts = async () => {
             teddyName.innerHTML = teddy.name;
             const teddyImg = clone.querySelector(".card-img-top");
             teddyImg.src = teddy.imageUrl;
+            const teddyPrice = clone.querySelector(".card-text");
+            teddyPrice.innerHTML = teddy.price / 100 + "€";
             const teddyLink = clone.querySelector(".card-link");
             teddyLink.href = `/frontend/html/product.html?id=${teddy._id}`;
             productCard.appendChild(clone);
