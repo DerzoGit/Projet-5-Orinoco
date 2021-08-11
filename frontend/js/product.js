@@ -1,10 +1,13 @@
+const params = (new URL(document.location)).searchParams;
+const id = params.get("id");
+console.log(id);
+
 const getProducts = async () => {
-    const response = await fetch("http://localhost:3000/api/teddies");
+    const response = await fetch(`http://localhost:3000/api/teddies/${id}`);
+    console.log(response);
     const teddies = await response.json();
     return teddies;
 };
-
-
 
 const displayProducts = async () => {
 
