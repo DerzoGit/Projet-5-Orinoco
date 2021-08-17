@@ -1,5 +1,6 @@
-const params = (new URL(document.location)).searchParams;
-const id = params.get("id");
+"use strict";
+
+const id = (new URL(document.location)).searchParams.get("id");
 console.log(id);
 
 const getProductId = async () => {
@@ -31,13 +32,13 @@ const displayProduct = async () => {
             const teddyPrice = clone.querySelector(".teddy-price");
             teddyPrice.innerHTML = teddy.price / 100 + "€";
 
-            for (i = 0; i < teddy.colors.length; i++) {
+            for (let color of teddy.colors) {
                 const teddyColors = clone.querySelector(".teddy-color");
-                teddyColors.innerHTML = teddy.colors;
+                teddyColors.innerHTML += `<option value="${color}">${color}</option>`;
             }
 
-            const teddyLink = clone.querySelector(".card-link");
-            teddyLink.href = `/frontend/html/product.html?id=${teddy._id}`;
+            /* const teddyLink = clone.querySelector(".card-link");
+            teddyLink.href = `/frontend/html/product.html?id=${teddy._id}`; */
 
             productCard.appendChild(clone);
         
@@ -50,3 +51,9 @@ const displayProduct = async () => {
 }
 
 displayProduct();
+
+const addToBasket = document.querySelector("#addToBasket");
+console.log(addToBasket);
+addToBasket.addEventListener("click", () => {
+    console.log("mon bouton fonctionne")
+})
