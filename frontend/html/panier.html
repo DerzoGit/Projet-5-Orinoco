@@ -52,9 +52,6 @@
 
     <main class="container">
         <div class="row">
-            <div class="basketList"></div>
-
-            <!-- <template id="teddyProduct"> -->
             <div>
                 <h2>Votre Panier</h2>
             </div>
@@ -77,6 +74,38 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="basketList"></div>
+
+            <template id="basketTemplate">
+                <div class="col-12 text-center">
+                <div class="row">
+                    <div class="col-4">
+                        <img src="" alt="photo d'ourson en peluche" class="teddy-img p-2">
+                    </div>
+                    <div class="col-2">
+                        <h5 class="text-center teddy-name"></h5>
+                    </div>
+                    <div class="col-2">
+                        <select class="card-text teddy-count">
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                            <option value="">5</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <p class="card-text teddy-price"></p>
+                    </div>
+                    <div class="col-2">
+                            <p class="card-text teddy-total-price"></p>
+                    </div>
+                </div>
+            </div>
+            </template>
+
+            
             <div class="col-12 text-center">
                 <div class="row">
                     <div class="col-4">
@@ -103,8 +132,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- </template> -->
 
         </div>
     </main>

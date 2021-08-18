@@ -71,10 +71,12 @@ addToBasket.addEventListener("click", async () => {
     const products = `${id}`;
     if(basketList.indexOf(products) > -1){
         console.log("product already added")
+        alert("L'article est déjà présent dans le panier.");
     } else if(basketList.indexOf(products) == -1) {
         basketList.push(products);
         window.localStorage.setItem("userBasket", JSON.stringify(basketList));
         console.log("product added to basket");
+        alert("L'article a bien été ajouté au panier !");
     }
     // if(basket.indexOf(products) === -1){
     //     basket.push(products);
