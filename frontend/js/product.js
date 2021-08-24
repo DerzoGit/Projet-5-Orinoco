@@ -3,7 +3,7 @@
 const id = (new URL(document.location)).searchParams.get("id");
 console.log(id);
 
-const getProductId = async () => {
+const getProduct = async () => {
     const response = await fetch(`http://localhost:3000/api/teddies/${id}`);
     console.log(response);
     const teddy = await response.json();
@@ -13,7 +13,7 @@ const getProductId = async () => {
 const displayProduct = async () => {
 
     try {
-        let teddy = await getProductId();
+        let teddy = await getProduct();
         console.log(teddy);
         const template = document.querySelector("#teddyProduct");
 
@@ -49,41 +49,49 @@ const displayProduct = async () => {
 
 displayProduct();
 
+const addToLocalStorage = async (product) => {
+        // Vérifie si le localStorage existe avec userBasket, créé le tableau avec l'objet sélectionné
+        if(!localStorage.getItem("userBasket")) {
+            localStorage.setItem("userBasket", JSON.stringify([product]));
+        } else {
+            // Vérifie si le storage a le produit sélectionné avec son id, si oui incrémente sa quantité, sinon ajoute le produit
+            const basketProducts = JSON.parse(localStorage.getItem("userBasket"));
+            console.log(basketProducts);
+            const productSelected = basketProducts.filter(prod => prod.id === id);
+            if(productSelected.length > 0) {
+                console.log(product.quantity);
+                productSelected[0].quantity++;
+                console.log(product.quantity);
+                console.log("1");
+                
+            } else {
+                basketProducts.push(product);
+                console.log("2");
+                
+            }
+            localStorage.setItem("userBasket", JSON.stringify(basketProducts));
+        }
+}
+
 const addToBasket = document.querySelector("#addToBasket");
-console.log(addToBasket);
-
 addToBasket.addEventListener("click", async () => {
+    // Création de l'objet à envoyer au localStorage
+    const {
+        imageUrl,
+        _id,
+        name,
+        price,
+    } = await getProduct();
+    const ourson = {
+        id: _id,
+        img: imageUrl,
+        name: name,
+        price: price,
+        quantity: 1,
+    };
 
-    // if (localStorage.getItem("userBasket")) {
-    // } else {
-    //     let initBasket = [];
-    //     localStorage.setItem("userBasket", JSON.stringify(initBasket));
-    // };
-
-    // let userBasket = JSON.parse(localStorage.getItem("userBasket"));
-
-    // const products = await getProductId();
-    // userBasket.push(products);
-    // localStorage.setItem("userBasket", JSON.stringify(userBasket));
-    // console.log("product add to basket");
-
-    const basketList = JSON.parse(window.localStorage.getItem("userBasket")) || [];
-    const products = `${id}`;
-    if(basketList.indexOf(products) > -1){
-        console.log("product already added")
-        alert("L'article est déjà présent dans le panier.");
-    } else if(basketList.indexOf(products) == -1) {
-        basketList.push(products);
-        window.localStorage.setItem("userBasket", JSON.stringify(basketList));
-        console.log("product added to basket");
-        alert("L'article a bien été ajouté au panier !");
-    }
-    // if(basket.indexOf(products) === -1){
-    //     basket.push(products);
-    //     window.localStorage.setItem("userBasket", JSON.stringify(basket));
-    //     console.log("product add to basket");
-    // } else if(basket.indexOf(products) != -1){
-    //     console.log("product already added");
-    // }
+    addToLocalStorage(ourson);
+    // alert("L'article a bien été ajouté au panier !");
+    console.log("added")
 
 });
