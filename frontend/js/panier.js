@@ -27,14 +27,14 @@ const displayProduct = async () => {
             const teddyImg = clone.querySelector(".teddy-img");
             teddyImg.src = teddy.img;
 
-            const teddyCount = clone.querySelector(".teddy-count");
-            teddyCount.innerHTML = teddy.quantity;
+            const teddyQuantity = clone.querySelector(".teddy-count");
+            teddyQuantity.innerHTML = teddy.quantity;
 
             const teddyPrice = clone.querySelector(".teddy-price");
             teddyPrice.innerHTML = teddy.price / 100 + "€";
 
             const teddyTotalPrice = clone.querySelector(".teddy-total-price");
-            teddyTotalPrice.innerHTML = teddyPrice*2 + "€" ;
+            teddyTotalPrice.innerHTML = (teddy.price * teddy.quantity) /100 + "€" ;
 
             basketList.appendChild(clone);
         }
