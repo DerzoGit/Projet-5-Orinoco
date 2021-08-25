@@ -70,33 +70,70 @@
                         <p class="card-text teddy-price">Prix</p>
                     </div>
                     <div class="col-2">
-                            <p class="card-text teddy-price">Prix total</p>
+                        <p class="card-text teddy-price">Prix total</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="basketList"></div>
+
+            <div class="row pt-4">
+                <div>
+                    <h2>Informations de livraison : </h2>
+                </div>
+                <form class="col-12 border border-secondary mb-3 text-center">
+                    <div class="row p-2">
+                        <div class="col-4 form--firstname">
+                            <label for="firstname">Prénom :</label>
+                            <input type="text" placeholder="Votre prénom" required>
+                        </div>
+                        <div class="col-4 form--lastname">
+                            <label for="lastname">Nom :</label>
+                            <input type="text" placeholder="Votre nom" required>
+                        </div>
+                        <div class="col-4 form--email">
+                            <label for="email">Email :</label>
+                            <input type="email" placeholder="Votre adresse email" required>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-4 form--adress">
+                            <label for="adress">Adresse postale :</label>
+                            <input type="adress" placeholder="Votre adresse postale" required>
+                        </div>
+                        <div class="col-4 form--city">
+                            <label for="city">Ville :</label>
+                            <input type="text" placeholder="Votre ville" required>
+                        </div>
+                        <div class="col-4 form--postcode">
+                            <label for="postcode">Code Postal :</label>
+                            <input type="text" placeholder="Votre code Postal">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary m-2">Valider votre commande</button>
+                </form>
+            </div>
 
             <template id="basketTemplate">
                 <div class="col-12 text-center">
-                <div class="row">
-                    <div class="col-4">
-                        <img src="" alt="photo d'ourson en peluche" class="teddy-img p-2 img-thumbnail">
-                    </div>
-                    <div class="col-2">
-                        <h5 class="text-center teddy-name"></h5>
-                    </div>
-                    <div class="col-2">
-                        <p class="card-text teddy-count"></p>
-                    </div>
-                    <div class="col-2">
-                        <p class="card-text teddy-price"></p>
-                    </div>
-                    <div class="col-2">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="" alt="photo d'ourson en peluche" class="teddy-img p-2 img-thumbnail">
+                        </div>
+                        <div class="col-2">
+                            <h5 class="text-center teddy-name"></h5>
+                        </div>
+                        <div class="col-2">
+                            <p class="card-text teddy-count"></p>
+                        </div>
+                        <div class="col-2">
+                            <p class="card-text teddy-price"></p>
+                        </div>
+                        <div class="col-2">
                             <p class="card-text teddy-total-price"></p>
+                        </div>
                     </div>
                 </div>
-            </div>
             </template>
 
         </div>
