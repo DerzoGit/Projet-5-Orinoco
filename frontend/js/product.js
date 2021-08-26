@@ -63,7 +63,6 @@ const addToLocalStorage = async (product) => {
                 productSelected[0].quantity++;
                 console.log(product.quantity);
                 console.log("1");
-                
             } else {
                 basketProducts.push(product);
                 console.log("2");
