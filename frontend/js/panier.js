@@ -129,6 +129,7 @@ submitForm.addEventListener("click", (event) => {
             console.log(response);
             const order = JSON.stringify(response.orderId);
             localStorage.setItem("order", order);
+            document.location.href = "confirmation.html";
         });
         console.log("1");
     } else {
