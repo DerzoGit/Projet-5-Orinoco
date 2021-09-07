@@ -90,7 +90,7 @@ addToBasket.addEventListener("click", async () => {
     };
 
     addToLocalStorage(ourson);
-    // alert("L'article a bien été ajouté au panier !");
+    alert("Un exemplaire de l'article a bien été ajouté au panier !");
     console.log("added")
 
 });
