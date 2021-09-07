@@ -80,11 +80,13 @@ submitForm.addEventListener("click", (event) => {
     let city = document.querySelector(".form-input-city").value;
     let email = document.querySelector(".form-input-email").value;
 
+    // Vérification regex des champs du formulaire
     const regexName = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+))$/;
-    const regexAddress = /^(([a-zA-ZÀ-ÿ0-9]+[\s\-]{1}[a-zA-ZÀ-ÿ0-9]+)){1,10}$/;
+    const regexAddress = /^(([a-zA-ZÀ-ÿ0-9]+[\s\-]{1}[a-zA-ZÀ-ÿ0-9]+)){1,10}|(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)){1,10}|(([a-zA-ZÀ-ÿ]+))$/;
     const regexCity = /^(([a-zA-ZÀ-ÿ]+[\s\-]{1}[a-zA-ZÀ-ÿ]+)|([a-zA-ZÀ-ÿ]+)){1,10}$/;
     const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
 
+    // Création de products et contact pour créer l'id de l'order
     const products = [];
     console.log(products);
     for (let teddy of choosenTeddies) {
@@ -101,7 +103,14 @@ submitForm.addEventListener("click", (event) => {
     };
     console.log(contact);
 
-    // if regex validation
+    // Validation des champs du formulaire
+    if(
+        (regexName.test(contact.firstName) == true) &
+        (regexName.test(contact.lastName) == true) &
+        (regexAddress.test(contact.address) == true) &
+        (regexCity.test(contact.city) == true) &
+        (regexEmail.test(contact.email) == true)
+    ) {
 
     const options = {
         method: "POST",
@@ -121,5 +130,10 @@ submitForm.addEventListener("click", (event) => {
             const order = JSON.stringify(response.orderId);
             localStorage.setItem("order", order);
         });
+        console.log("1");
+    } else {
+        alert("Veuillez remplir correctement les champs demandés")
+        console.log("2");
+    }
 
 });
