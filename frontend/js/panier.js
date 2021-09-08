@@ -127,7 +127,7 @@ submitForm.addEventListener("click", (event) => {
         .then(response => response.json())
         .then(response => {
             console.log(response);
-            const order = JSON.stringify(response.orderId);
+            const order = JSON.stringify(response);
             localStorage.setItem("order", order);
             document.location.href = "confirmation.html";
         });
