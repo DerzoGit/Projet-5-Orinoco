@@ -8,7 +8,6 @@ const getProducts = async () => {
 
 
 const displayProducts = async () => {
-
     let teddies = [];
     try {
         teddies = await getProducts();
@@ -30,12 +29,9 @@ const displayProducts = async () => {
             teddyLink.href = `/frontend/html/product.html?id=${teddy._id}`;
             productCard.appendChild(clone);
         }
-        
     } catch (error) {
         console.log(error);
     }
-    
-    
 }
 
 displayProducts();
