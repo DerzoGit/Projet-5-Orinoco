@@ -1,6 +1,7 @@
 const getProducts = async () => {
     const response = await fetch("http://localhost:3000/api/teddies");
     const teddies = await response.json();
+    // console.log(teddies);
     return teddies;
 };
 
@@ -21,7 +22,10 @@ const displayProducts = async () => {
             const teddyImg = clone.querySelector(".card-img-top");
             teddyImg.src = teddy.imageUrl;
             const teddyPrice = clone.querySelector(".card-text");
-            teddyPrice.innerHTML = teddy.price / 100 + "€";
+            teddyPrice.innerHTML = new Intl.NumberFormat("fr-FR", {
+                style: "currency",
+                currency: "EUR"
+            }).format(teddy.price / 100);
             const teddyLink = clone.querySelector(".card-link");
             teddyLink.href = `/frontend/html/product.html?id=${teddy._id}`;
             productCard.appendChild(clone);
