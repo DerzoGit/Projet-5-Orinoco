@@ -1,13 +1,11 @@
 "use strict";
 
 const choosenTeddies = JSON.parse(localStorage.getItem("userBasket"));
-console.log(choosenTeddies);
 
 const displayProduct = async () => {
-
-
     try {
         const template = document.querySelector("#basketTemplate");
+        // console.log(choosenTeddies);
         for (let teddy of choosenTeddies) {
             const basketList = document.querySelector(".basketList");
             const clone = document.importNode(template.content, true);
@@ -37,23 +35,21 @@ const displayProduct = async () => {
         }
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
-
 }
 
 const totalPrice = () => {
     const calculPrice = [];
-    console.log(calculPrice);
     for (let teddy of choosenTeddies) {
         let itemPrice = teddy.price * teddy.quantity;
         calculPrice.push(itemPrice);
     }
-    console.log(calculPrice);
+    // console.log(calculPrice);
     // Récupère le prix total des produits du localStorage 
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     const totalPrice = calculPrice.reduce(reducer, 0) / 100;
-    console.log(totalPrice);
+    // console.log(totalPrice);
 
     // Ajout du prix total au localStorage
     localStorage.setItem("basketPrice", totalPrice);
@@ -63,7 +59,6 @@ const totalPrice = () => {
         style: "currency",
         currency: "EUR"
     }).format(totalPrice);
-
 }
 totalPrice();
 
@@ -88,11 +83,10 @@ submitForm.addEventListener("click", (event) => {
 
     // Création de products et contact pour créer l'id de l'order
     const products = [];
-    console.log(products);
     for (let teddy of choosenTeddies) {
         products.push(teddy.id);
     };
-    console.log(products);
+    // console.log(products);
 
     let contact = {
         firstName,
@@ -101,7 +95,7 @@ submitForm.addEventListener("click", (event) => {
         city,
         email
     };
-    console.log(contact);
+    // console.log(contact);
 
     // Validation des champs du formulaire
     if(
@@ -126,15 +120,13 @@ submitForm.addEventListener("click", (event) => {
     fetch("http://localhost:3000/api/teddies/order", options)
         .then(response => response.json())
         .then(response => {
-            console.log(response);
             const order = JSON.stringify(response);
             localStorage.setItem("order", order);
             document.location.href = "confirmation.html";
         });
-        console.log("1");
+        // console.log("Commande validée");
     } else {
         alert("Veuillez remplir correctement les champs demandés")
-        console.log("2");
+        // console.log("Les champs ne sont pas bien remplis");
     }
-
 });
