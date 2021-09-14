@@ -11,9 +11,10 @@ const displayProducts = async () => {
     let teddies = [];
     try {
         teddies = await getProducts();
-        console.log(teddies);
+        // console.log(teddies);
         const template = document.querySelector("#teddyList");
         for (let teddy of teddies) {
+            // console.log(teddy);
             const productCard = document.querySelector(".productCard");
             const clone = document.importNode(template.content, true);
             const teddyName = clone.querySelector(".card-title");
@@ -30,7 +31,7 @@ const displayProducts = async () => {
             productCard.appendChild(clone);
         }
     } catch (error) {
-        console.log(error);
+        // console.log(error);
     }
 }
 
