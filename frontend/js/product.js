@@ -3,10 +3,15 @@
 const id = (new URL(document.location)).searchParams.get("id");
 
 const getProduct = async () => {
-    const response = await fetch(`http://localhost:3000/api/teddies/${id}`);
-    const teddy = await response.json();
-    // console.log(teddy);
-    return teddy;
+    try {
+        const response = await fetch(`http://localhost:3000/api/teddies/${id}`);
+        const teddy = await response.json();
+        // console.log(teddy);
+        return teddy;
+    } catch (error) {
+        console.error("L'erreur est :", error);
+    }
+    
 };
 
 const displayProduct = async () => {
@@ -39,7 +44,7 @@ const displayProduct = async () => {
         }
         productCard.appendChild(clone);
     } catch (error) {
-        console.log(error);
+        console.error("L'erreur est :", error);
     }
 }
 

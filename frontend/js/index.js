@@ -1,8 +1,12 @@
 const getProducts = async () => {
-    const response = await fetch("http://localhost:3000/api/teddies");
-    const teddies = await response.json();
-    // console.log(teddies);
-    return teddies;
+    try {
+        const response = await fetch("http://localhost:3000/api/teddies");
+        const teddies = await response.json();
+        console.log(teddies);
+        return teddies;
+    } catch (error) {
+        console.error("L'erreur est :", error);
+    }
 };
 
 
@@ -31,7 +35,7 @@ const displayProducts = async () => {
             productCard.appendChild(clone);
         }
     } catch (error) {
-        // console.log(error);
+        console.error("L'erreur est :", error);
     }
 }
 
