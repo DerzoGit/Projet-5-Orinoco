@@ -35,7 +35,7 @@ const displayProduct = async () => {
         }
 
     } catch (error) {
-        // console.log(error);
+        console.error("L'erreur est :", error);
     }
 }
 
@@ -63,7 +63,6 @@ const totalPrice = () => {
 totalPrice();
 
 displayProduct();
-
 
 const submitForm = document.querySelector(".submit-button");
 submitForm.addEventListener("click", (event) => {

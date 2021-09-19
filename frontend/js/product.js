@@ -11,7 +11,6 @@ const getProduct = async () => {
     } catch (error) {
         console.error("L'erreur est :", error);
     }
-    
 };
 
 const displayProduct = async () => {
@@ -90,5 +89,4 @@ addToBasket.addEventListener("click", async () => {
     addToLocalStorage(ourson);
     alert("Un exemplaire de l'article a bien été ajouté au panier !");
     // console.log("Produit ajouté au panier");
-
 });
