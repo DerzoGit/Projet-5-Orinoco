@@ -21,4 +21,6 @@ orderMail.innerHTML = order.contact.email;
 const orderAddress = document.querySelector(".order-address");
 orderAddress.innerHTML = order.contact.address + ", " + order.contact.city;
 
-localStorage.clear();
+localStorage.removeItem("userBasket");
+localStorage.removeItem("basketPrice");
+localStorage.removeItem("order");
